@@ -57,7 +57,7 @@ female5
 1. How does the tipping amount (`tip`) depend on the overall bill (`total_bill`)? Use the `ggplot2` package to make a chart. Describe the relationship in words.
 ```{r}
 library(ggplot2)
-ggplot(tips,aes(x=tips$total_bill, y=tips$tip))+geom_point()+geom_smooth(method='lm')+xlab('total Bill ($)')+ylab('tip ($)')
+ggplot(tips,aes(x=tips$total_bill, y=tips$tip))+geom_point()+geom_smooth(method='lm')+xlab('total Bill ($)')+ylab('tip ($)')+ggtitle('Tips vs Total Bill')
 ```
 1. Describe at least two types of anomalies in the previous plot. What do they mean?
 There are outliers such as the over $5 tip on a less than $10 total bill or less $1.25 on an over $30 meal meaning that people can be more generous or evil with tips. 
@@ -74,7 +74,7 @@ The average rate for tips is around 20% of the bill which is around the preffere
 1. Make a boxplot of the tip rate by time. The x-axis should be ordered by lunch and then dinner. Use `ggplot2` to make a chart. Verbally explain the chart.
 ```{r}
 
-ggplot(tips,aes(x=reorder(tips$time, +tiprate), y=tips$tiprate))+geom_boxplot()+xlab('time')+ylab('tiprate (%)')
+ggplot(tips,aes(x=reorder(tips$time, +tiprate), y=tips$tiprate))+geom_boxplot()+xlab('time')+ylab('tiprate (%)')+ggtitle('tiprate vs time of day')
 
 ```
 Dinner and lunch are around the same as a box plot however has way more outliers shown including the one of 250%
@@ -86,7 +86,7 @@ ggplot(tips,aes(x=tips$total_bill,y=tips$tip, colour=tips$sex, shape=tips$smoker
   y="tip",
   colour="sex",
   shape="smoker"
-)
+)+ggtitle('sex,smoker,tip vs total bill')
 ```
 Men seem to pay more whent he bill is higher the regression seems positively linear nomatter who the person is.
 
@@ -96,7 +96,7 @@ ggplot(tips,aes(x=tips$day, fill=tips$sex))+geom_bar(position = "dodge")+labs(
   x="Day",
   y="Count",
   fill="sex"
-)
+)+ggtitle('Sex who paid each day')
 ```
 Men seem to pay more frequently on saturday and sunday however friday and thursday are around even in pay frequency. 
 Note: your submission is supposed to be fully reproducible, i.e. the TA and I will 'knit' your submission in RStudio. 
